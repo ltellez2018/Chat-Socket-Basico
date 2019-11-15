@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { WebsocketService } from './websocket.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,14 @@ export class ChatService {
   getMessagesPrivate() {
     return this.websocketService.listen('mensaje-privado');
   }
+  
+  
+  getUsuariosActivos() {
+    return this.websocketService.listen('usuarios-activos');
+  }
 
+  emitirUsuariosActivos() {
+    return this.websocketService.emit('usuarios-conectados');
+   
+  }
 }
